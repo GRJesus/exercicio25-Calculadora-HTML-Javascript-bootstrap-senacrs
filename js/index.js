@@ -1,27 +1,46 @@
+
 function send (event) {
   event.preventDefault();
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var age = parseInt(document.getElementById("age").value);
+  var telephone = parseInt(document.getElementById("telephone").value);
+  var address = document.getElementById("address").value;
   var errors = [];
-  if (name.split(" ",2)) {
-    errors.push("Favor preencher o nome e sobrenome");
+
+if (name.split(" ").length <= 2) {
+  errors.push("Favor preencher o nome e sobrenome");
+} else {
+  if (name=="") {
+    errors.push("Campo nome e sobrenome obrigatório")
+  } 
+}
+if (email=="") {
+  errors.push("Favor informar o e-mail");
+}
+if (isNaN(age)) {
+  errors.push("Campo idade obrigatório");
+} else {
+  if (age < 18){
+  errors.push("Permitido somente maiores de 18 anos");
+  } 
+}
+if (telephone=="" ) {
+  errors.push("Campo telefone obrigatório");
+} else {
+  if (isNaN(telephone)){
+    errors.push("Favor informar somente numeros")
   }
-  if (email=="" || email!="") {
-    errors.push("Favor informar o e-mail");
-  }
-  if (age >=18 || age!="") {
-    errors.push("Digitar uma idade maior que 17 anos");
-  }
-  if (telephone="" || telephone!=""){
-    errors.push("Favor informar o numero de telefone");
-  }
-  if (address=="" || address!="") {
-    errors.push("Favor informar o seu endereço");
-  }
-  if (errors.length>0) {
-    result.innerHTML = errors.join("</br>");
-  }
-  else {
-    result.innerHTML = ("Dados preenchidos com sucesso");
-  }
+}
+if (address=="") {
+  errors.push("Campo endereço obrigatório");
+}
+if (errors.length>0) {
+  result.innerHTML = errors.join("</br>");
+}
+else {
+  result.innerHTML = (name + " ,parabéns! seus dados foram preenchidos com sucesso.");
+}
 }
 
 // JavaScript Document
@@ -66,9 +85,3 @@ function send (event) {
 
 // backspace 		
 //for(i=0; i<= TamanhoMascara; i++) { 			boleanoMascara  = ((Mascara.charAt(i) == "-") || (Mascara.charAt(i) == ".")								|| (Mascara.charAt(i) == "/")) 			boleanoMascara  = boleanoMascara || ((Mascara.charAt(i) == "(") 								|| (Mascara.charAt(i) == ")") || (Mascara.charAt(i) == " ")) 			if (boleanoMascara) { 				NovoValorCampo += Mascara.charAt(i); 				  TamanhoMascara++;			}else { 				NovoValorCampo += campoSoNumeros.charAt(posicaoCampo); 				posicaoCampo++; 			  }	   	 		  }	 		campo.value = NovoValorCampo;		  return true; 	}else { 		return true; 	}}
-
------------------------------------------------------------------------------------
-
-Post Mesclado
-
------------------------------------------------------------------------------------
